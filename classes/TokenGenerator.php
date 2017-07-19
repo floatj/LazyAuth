@@ -34,6 +34,8 @@ class TokenGenerator
 
         if($config_array == null) $config_array = $this->config;
 
+        $ret = array();
+
         foreach ($config_array as $config)
         {
             $title = $config['title'];
@@ -48,11 +50,12 @@ class TokenGenerator
                 $code = "0". $code;
             }
 
-            echo "$title<br />";
-            //echo "<span style='color:#CCC;'>$secret</span><br />";
-            echo "<span style='font-size:24px;'>$code</span><br />";
-            echo "<hr>";
+            //把產生的 code 跟 title 加到回傳陣列
+            array_push($ret, ['title'=>$title, 'code'=>$code]);
+
         }
+
+        return $ret;
 
     }
 
